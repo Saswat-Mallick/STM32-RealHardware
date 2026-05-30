@@ -1,14 +1,14 @@
 #include <Arduino.h>
 
-int myFunction(int, int);
-
 void setup() {
-  int result = myFunction(2, 3);
+  Serial.begin(9600);   // UART1 on A9/A10, 9600 baud
+  delay(2000);          // Give monitor time to connect
+  Serial.println("STM32 Blue Pill UART is alive!");
 }
 
 void loop() {
-}
-
-int myFunction(int x, int y) {
-  return x + y;
+  static int count = 0;
+  Serial.print("Heartbeat #");
+  Serial.println(count++);
+  delay(1000);
 }
